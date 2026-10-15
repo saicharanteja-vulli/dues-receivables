@@ -19,7 +19,7 @@ Set `DUES_MAIL_MODE=smtp` plus the SMTP host, port, sender, username and passwor
 
 ## Backups and restore
 
-Daily encrypted snapshots run while the app is running, if `DUES_BACKUP_KEY` is configured. Local use now has a private `.env` key and backups folder. Keep the key separate from exported backups. Monitor available disk space; snapshots are not automatically deleted.
+Daily encrypted snapshots run while the app is running, if `DUES_BACKUP_KEY` is configured. For local use, configure your own key in a private `.env` file; backups are stored in the ignored backups folder. Keep the key separate from exported backups. Monitor available disk space; snapshots are not automatically deleted.
 
 To restore, stop Dues. Supply the original key privately in the environment, then run `python backup_secure.py restore /path/snapshot.dues-backup /path/new-data`. Restoration refuses an existing destination, authenticates the ciphertext, and checks the database manifest. Switch `DUES_DATA` or migrate the restored directory into a fresh data volume. Verify the app before discarding prior data. Full snapshots contain account/session records; consider revoking sessions after disaster recovery.
 
