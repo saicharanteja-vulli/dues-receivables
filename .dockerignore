@@ -1,0 +1,10 @@
+*
+!requirements.txt
+!app.py
+!release.py
+!ocr.py
+!maintenance.py
+!backup_secure.py
+!static/**
+!samples/**
+!provision.py

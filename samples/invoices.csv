@@ -1,0 +1,4 @@
+number,customer,due,amount,currency
+INV-001,Maple Studio,2026-10-01,10000.00,INR
+INV-002,Cedar Labs,2026-10-20,12000.00,INR
+INV-003,Cedar Labs,2026-10-25,8000.00,INR

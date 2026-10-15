@@ -1,0 +1,6 @@
+transaction_id,customer,paid_date,reference,amount,currency
+BANK-001,Maple Studio,2026-10-02,INV-001 part payment,4000.00,INR
+BANK-002,Maple Studio,2026-10-05,INV-001 balance,6000.00,INR
+BANK-001,Maple Studio,2026-10-02,INV-001 part payment,4000.00,INR
+BANK-003,Cedar Labs,2026-10-08,INV-002 deposit,5000.00,INR
+BANK-004,Cedar Labs,2026-10-09,October services,2000.00,INR

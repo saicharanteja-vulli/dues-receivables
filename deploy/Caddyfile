@@ -1,0 +1,7 @@
+{$DUES_DOMAIN} {
+    request_body {
+        max_size 3MB
+    }
+    header Strict-Transport-Security "max-age=31536000"
+    reverse_proxy dues:8120
+}

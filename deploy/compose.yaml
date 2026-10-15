@@ -1,0 +1,42 @@
+services:
+  dues:
+    build: ..
+    restart: unless-stopped
+    env_file: ${DUES_ENV_FILE:-.env}
+    environment:
+      DUES_DATA: /data
+      DUES_BACKUP_DIR: /backups
+      DUES_SECURE_COOKIE: '1'
+      DUES_ALLOW_SIGNUP: '0'
+    volumes:
+      - dues-data:/data
+      - dues-backups:/backups
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    mem_limit: 768m
+    cpus: 1.0
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+  web:
+    image: caddy:2
+    restart: unless-stopped
+    env_file: ${DUES_ENV_FILE:-.env}
+    ports: ['80:80', '443:443']
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      dues:
+        condition: service_healthy
+volumes:
+  dues-data:
+  dues-backups:
+  caddy-data:
+  caddy-config:
